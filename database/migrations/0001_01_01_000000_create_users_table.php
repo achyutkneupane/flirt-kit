@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Enums\UserRole;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,7 +18,7 @@ return new class extends Migration
             $blueprint->id();
             $blueprint->string('name');
             $blueprint->string('email')->unique();
-            $blueprint->string('role')->default(\App\Enums\UserRole::User);
+            $blueprint->string('role')->default(UserRole::User);
             $blueprint->timestamp('email_verified_at')->nullable();
             $blueprint->string('password');
             $blueprint->rememberToken();

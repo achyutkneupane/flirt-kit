@@ -1,10 +1,10 @@
+import Navbar from "@/Components/Shared/Navbar";
+import { cn } from "@/Lib/Utils";
 import { LayoutProps } from "@/Types/Types";
+import ThemeWrapper from "@/Wrappers/ThemeWrapper";
 import { Head } from "@inertiajs/react";
 import { FC } from "react";
 import { Bounce, ToastContainer } from "react-toastify";
-import ThemeWrapper from "@/Wrappers/ThemeWrapper";
-import Navbar from "@/Components/Shared/Navbar";
-import {cn} from "@/Lib/Utils";
 
 const FrontWrapper: FC<LayoutProps> = (props) => {
     const { children, title } = props;

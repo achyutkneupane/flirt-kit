@@ -22,7 +22,7 @@ final class DatabaseSeeder extends Seeder
             'name' => 'Achyut Neupane',
             'email' => 'achyutkneupane@gmail.com',
             'role' => UserRole::Developer,
-            'password' => bcrypt('Achyut@123')
+            'password' => bcrypt('Achyut@123'),
         ]);
     }
 }

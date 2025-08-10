@@ -24,6 +24,7 @@
         "clsx": "^2.1.1",
         "lucide-react": "^0.539.0",
         "motion": "^12.23.12",
+        "prettier": "^3.6.2",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
         "react-toastify": "^11.0.5",

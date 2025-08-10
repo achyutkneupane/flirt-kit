@@ -37,6 +37,11 @@ final class User extends Authenticatable implements FilamentUser
         'remember_token',
     ];
 
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return auth()->check();
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -49,10 +54,5 @@ final class User extends Authenticatable implements FilamentUser
             'password' => 'hashed',
             'role' => UserRole::class,
         ];
-    }
-
-    public function canAccessPanel(Panel $panel): bool
-    {
-        return auth()->check();
     }
 }

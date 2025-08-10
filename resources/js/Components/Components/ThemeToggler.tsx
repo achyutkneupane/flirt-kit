@@ -1,5 +1,5 @@
 import useTheme from "@/Hooks/useTheme";
-import {Theme} from "@/Types/Enums";
+import { Theme } from "@/Types/Enums";
 import { LaptopMinimal, Moon, Sun } from "lucide-react";
 
 const ThemeToggler = (props: { className?: string }) => {

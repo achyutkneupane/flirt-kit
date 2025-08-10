@@ -1,8 +1,8 @@
+import ThemeToggler from "@/Components/Components/ThemeToggler";
 import useTheme from "@/Hooks/useTheme";
 import { cn } from "@/Lib/Utils";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { motion } from "motion/react";
-import ThemeToggler from "@/Components/Components/ThemeToggler";
 
 const Navbar = () => {
     const appName = import.meta.env.VITE_APP_NAME || "Filament & Inertia Kit";
