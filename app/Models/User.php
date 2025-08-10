@@ -42,20 +42,6 @@ final class User extends Authenticatable implements FilamentUser
         return auth()->check();
     }
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-            'role' => UserRole::class,
-        ];
-    }
-
     /** @returns array<int, UserRole> */
     public function lowerRoles(): array
     {
@@ -72,6 +58,21 @@ final class User extends Authenticatable implements FilamentUser
         if (auth()->user()->role === UserRole::Developer) {
             return true;
         }
+
         return in_array($this->role, auth()->user()->lowerRoles());
+    }
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+            'role' => UserRole::class,
+        ];
     }
 }
