@@ -1,0 +1,4 @@
+resources/js/components/ui/*
+resources/js/ziggy.js
+resources/views/mail/*
+storage/debugbar/*

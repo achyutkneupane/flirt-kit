@@ -1,0 +1,33 @@
+name: "Lint PR"
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - edited
+      - synchronize
+
+permissions:
+  pull-requests: read
+
+jobs:
+  main:
+    name: Validate PR title
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: "Check PR title"
+        uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: "Run Rector Dry-run"
+        uses: zingimmick/rector-action@0.0.2
+        with:
+          args: --dry-run --config=rector.php
+      - name: "Run Pint"
+        uses: aglipanci/laravel-pint-action@latest
+        with:
+          configPath: "pint.json"
+          testMode: true
+          verboseMode: true
+          onlyDirty: true
