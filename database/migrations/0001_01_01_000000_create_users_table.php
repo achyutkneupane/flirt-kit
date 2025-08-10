@@ -22,6 +22,7 @@ return new class extends Migration
             $blueprint->timestamp('email_verified_at')->nullable();
             $blueprint->string('password');
             $blueprint->rememberToken();
+            $blueprint->softDeletes();
             $blueprint->timestamps();
         });
 

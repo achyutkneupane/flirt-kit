@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Pages;
+namespace App\Filament\Clusters\Settings\Pages;
 
 use App\Enums\UserRole;
 use App\Filament\Clusters\Settings\SettingsCluster;
