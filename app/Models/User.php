@@ -55,4 +55,23 @@ final class User extends Authenticatable implements FilamentUser
             'role' => UserRole::class,
         ];
     }
+
+    /** @returns array<int, UserRole> */
+    public function lowerRoles(): array
+    {
+        return match (auth()->user()->role) {
+            UserRole::Developer => [UserRole::Developer, UserRole::Admin, UserRole::User],
+            UserRole::Admin => [UserRole::User],
+            UserRole::User => [],
+        };
+    }
+
+    /** @returns bool */
+    public function isLowerInRole(): bool
+    {
+        if (auth()->user()->role === UserRole::Developer) {
+            return true;
+        }
+        return in_array($this->role, auth()->user()->lowerRoles());
+    }
 }
