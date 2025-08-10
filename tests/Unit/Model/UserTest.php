@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Enums\UserRole;
 use App\Models\User;
 
 use function Pest\Laravel\actingAs;
 
-it('returns correct lowerRoles for Developer', function () {
+it('returns correct lowerRoles for Developer', function (): void {
     /** @var User $developer */
     $developer = User::factory()->make(['role' => UserRole::Developer]);
     actingAs($developer);
@@ -17,7 +19,7 @@ it('returns correct lowerRoles for Developer', function () {
     ]);
 });
 
-test('developer can see another developer as lower in role', function () {
+test('developer can see another developer as lower in role', function (): void {
     /** @var User $developer1 */
     $developer1 = User::factory()->make(['role' => UserRole::Developer]);
     actingAs($developer1);
@@ -28,7 +30,7 @@ test('developer can see another developer as lower in role', function () {
     expect($developer2->isLowerInRole())->toBeTrue();
 });
 
-test('admin and user does not see developer as lower in role', function () {
+test('admin and user does not see developer as lower in role', function (): void {
     $target = User::factory()->make(['role' => UserRole::Developer]);
 
     /** @var User $admin */
@@ -44,7 +46,7 @@ test('admin and user does not see developer as lower in role', function () {
     expect($target->isLowerInRole())->toBeFalse();
 });
 
-it('can access filament panel after logging in', function () {
+it('can access filament panel after logging in', function (): void {
     $filamentPanel = filament()->getPanel('admin');
 
     /** @var User $user */

@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Enums\UserRole;
 use Filament\Support\Colors\Color;
 
-describe('label', function () {
-    it('returns correct label for each role', function (UserRole $role, string $expectedLabel) {
-        expect($role->getLabel())->toBe($expectedLabel);
+describe('label', function (): void {
+    it('returns correct label for each role', function (UserRole $userRole, string $expectedLabel): void {
+        expect($userRole->getLabel())->toBe($expectedLabel);
     })->with([
         [UserRole::Developer, 'Developer'],
         [UserRole::Admin, 'Admin'],
@@ -13,9 +15,9 @@ describe('label', function () {
     ]);
 });
 
-describe('color', function () {
-    it('returns correct color for each role', function (UserRole $role, Color|array $expectedColor) {
-        expect($role->getColor())->toBe($expectedColor);
+describe('color', function (): void {
+    it('returns correct color for each role', function (UserRole $userRole, Color|array $expectedColor): void {
+        expect($userRole->getColor())->toBe($expectedColor);
     })->with([
         [UserRole::Developer, Color::Red],
         [UserRole::Admin, Color::Blue],
@@ -23,9 +25,9 @@ describe('color', function () {
     ]);
 });
 
-describe('value', function () {
-    it('has expected string values', function (UserRole $role, string $expectedValue) {
-        expect($role->value)->toBe($expectedValue);
+describe('value', function (): void {
+    it('has expected string values', function (UserRole $userRole, string $expectedValue): void {
+        expect($userRole->value)->toBe($expectedValue);
     })->with([
         [UserRole::Developer, 'developer'],
         [UserRole::Admin, 'admin'],
