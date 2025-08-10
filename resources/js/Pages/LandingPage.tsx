@@ -1,5 +1,3 @@
-"use client";
-
 import { cn } from "@/Lib/Utils";
 import FrontWrapper from "@/Wrappers/FrontWrapper";
 import { ReactNode } from "react";

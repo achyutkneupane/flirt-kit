@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-arch('no dd, dump, or ray calls')
-    ->expect(['dd', 'dump', 'ray'])
+arch('no dd, dump, or ddd calls')
+    ->expect(['dd', 'dump', 'ddd'])
     ->each
     ->not
     ->toBeUsed();
