@@ -41,7 +41,12 @@ final class User extends Authenticatable implements FilamentUser
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return auth()->check();
+        // Update this method to control access to the Filament panel.
+        // Here, we allow access only to users with the Developer or Admin role.
+        return in_array($this->role, [
+            UserRole::Developer,
+            UserRole::Admin,
+        ]);
     }
 
     /** @returns array<int, UserRole> */
