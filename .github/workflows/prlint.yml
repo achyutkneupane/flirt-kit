@@ -1,4 +1,4 @@
-name: "Lint PR"
+name: "Lint & Test PR"
 
 on:
   pull_request_target:
@@ -12,22 +12,43 @@ permissions:
 
 jobs:
   main:
-    name: Validate PR title
+    name: Pint, Rector & Test with coverage
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [ 8.2, 8.3, 8.4 ]
     steps:
-      - uses: actions/checkout@v4
+      -   name: Checkout Code
+          uses: actions/checkout@v4
+          with:
+            ref: ${{ github.head_ref }}
+            fetch-depth: 0
+
       - name: "Check PR title"
         uses: amannn/action-semantic-pull-request@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: "Run Rector Dry-run"
-        uses: zingimmick/rector-action@0.0.2
-        with:
-          args: --dry-run --config=rector.php
-      - name: "Run Pint"
-        uses: aglipanci/laravel-pint-action@latest
-        with:
-          configPath: "pint.json"
-          testMode: true
-          verboseMode: true
-          onlyDirty: true
+
+      -   name: "Setup PHP"
+          uses: shivammathur/setup-php@v2
+          with:
+            php-version: ${{ matrix.php }}
+            extensions: json, dom, curl, libxml, mbstring
+            coverage: xdebug
+
+      -   name: "Install Composer Dependencies"
+          run: |
+            composer install --no-interaction --prefer-dist --optimize-autoloader --no-ansi --no-progress
+
+      -   name: "Run Rector"
+          run: |
+            ./vendor/bin/rector process --dry-run --config=rector.php
+
+      -   name: "Run Pint"
+          run: |
+            ./vendor/bin/pint --config=pint.json --test --verbose --dirty
+
+      -   name: "Run Tests"
+          run: |
+            ./vendor/bin/pest --colors=always --stop-on-failure --coverage --ci

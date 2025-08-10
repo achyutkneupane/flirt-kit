@@ -1,16 +1,14 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/laravel",
+    "name": "achyutn/starter-kit",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "The skeleton application for the Laravel framework with RILT stack and Filament v4 as Admin Panel.",
+    "keywords": ["laravel", "framework", "filament", "starter-kit", "rilt"],
     "license": "MIT",
     "require": {
         "php": "^8.2",
         "achyutn/filament-log-viewer": "^1",
         "awcodes/filament-gravatar": "^3.0",
-        "barryvdh/laravel-debugbar": "^3.16",
-        "driftingly/rector-laravel": "^2.0",
         "filament/filament": "^4",
         "filament/spatie-laravel-media-library-plugin": "^3.3",
         "filament/spatie-laravel-settings-plugin": "^4.0",
@@ -19,10 +17,12 @@
         "laravel/framework": "^12.22",
         "laravel/pulse": "^1.4",
         "laravel/tinker": "^2.10.1",
-        "pxlrbt/filament-environment-indicator": "^3.1",
         "tightenco/ziggy": "^2.5"
     },
     "require-dev": {
+        "pxlrbt/filament-environment-indicator": "^3.1",
+        "barryvdh/laravel-debugbar": "^3.16",
+        "driftingly/rector-laravel": "^2.0",
         "fakerphp/faker": "^1.23",
         "laravel/pail": "^1.2.2",
         "laravel/pint": "^1.13",
