@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages;
 
+use App\Filament\Clusters\Settings\SettingsCluster;
 use App\Settings\SocialMediaSettings;
 use BackedEnum;
 use Exception;
@@ -12,9 +13,11 @@ use Filament\Support\Icons\Heroicon;
 
 class ManageSocialMedia extends SettingsPage
 {
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCog6Tooth;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::Squares2x2;
+    protected static string | BackedEnum | null $activeNavigationIcon = Heroicon::OutlinedSquares2x2;
 
     protected static string $settings = SocialMediaSettings::class;
+    protected static ?string $cluster = SettingsCluster::class;
 
     /**
      * @throws Exception
@@ -23,15 +26,6 @@ class ManageSocialMedia extends SettingsPage
     {
         return $schema
             ->components([
-//                TextInput::make('linkedin'),
-//                TextInput::make('whatsapp'),
-//                TextInput::make('x'),
-//                TextInput::make('facebook'),
-//                TextInput::make('instagram'),
-//                TextInput::make('tiktok'),
-//                TextInput::make('medium'),
-//                TextInput::make('youtube'),
-//                TextInput::make('github'),
                 TextInput::make('linkedin')
                     ->label('LinkedIn')
                     ->prefix('https://www.linkedin.com/in/'),
