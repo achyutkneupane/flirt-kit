@@ -6,7 +6,7 @@
     "keywords": ["laravel", "framework", "filament", "starter-kit", "rilt"],
     "license": "MIT",
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "achyutn/filament-log-viewer": "^1",
         "awcodes/filament-gravatar": "^3.0",
         "filament/filament": "^4",
