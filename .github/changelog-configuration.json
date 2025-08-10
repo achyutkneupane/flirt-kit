@@ -56,9 +56,7 @@
             "labels": ["other"]
         }
     ],
-    "ignore_labels": [
-        "other"
-    ],
+    "ignore_labels": ["other"],
     "template": "#{{CHANGELOG}}",
     "commit_template": "- #{{TITLE}} (#{{MERGE_SHA}}) by @#{{AUTHOR}}",
     "pr_template": "- #{{TITLE}} (##{{NUMBER}}) by @#{{AUTHOR}}",
