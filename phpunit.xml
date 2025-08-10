@@ -21,6 +21,7 @@
         </include>
         <exclude>
             <directory>app/Filament</directory>
+            <directory>app/Settings</directory>
         </exclude>
     </source>
     <php>

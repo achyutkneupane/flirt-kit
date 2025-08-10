@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages;
 
+use App\Enums\UserRole;
 use App\Filament\Clusters\Settings\SettingsCluster;
 use App\Settings\SocialMediaSettings;
 use BackedEnum;
@@ -54,5 +55,10 @@ class ManageSocialMedia extends SettingsPage
                     ->label('GitHub')
                     ->prefix('https://www.github.com/')
             ]);
+    }
+
+    public static function canAccess(): bool
+    {
+        return auth()->user()->role !== UserRole::User;
     }
 }
