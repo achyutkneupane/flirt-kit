@@ -1,14 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Resources\Users\Schemas;
 
+use Exception;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
 
-class UserInfolist
+final class UserInfolist
 {
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public static function configure(Schema $schema): Schema
     {

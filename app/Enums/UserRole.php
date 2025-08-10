@@ -8,7 +8,7 @@ use Filament\Support\Colors\Color;
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasLabel;
 
-enum UserRole: string implements HasLabel, HasColor
+enum UserRole: string implements HasColor, HasLabel
 {
     case Developer = 'developer';
     case Admin = 'admin';
@@ -22,6 +22,7 @@ enum UserRole: string implements HasLabel, HasColor
             self::User => 'User',
         };
     }
+
     public function getColor(): string|array|null
     {
         return match ($this) {

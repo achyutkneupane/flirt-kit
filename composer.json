@@ -70,7 +70,8 @@
         ],
         "lint": [
             "rector",
-            "pint"
+            "pint",
+            "prettier --write ."
         ]
     },
     "extra": {

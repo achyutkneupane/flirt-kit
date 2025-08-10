@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Resources\Users;
 
 use App\Filament\Resources\Users\Pages\CreateUser;
@@ -19,12 +21,13 @@ use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
-class UserResource extends Resource
+final class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUserCircle;
-    protected static string | BackedEnum | null $activeNavigationIcon = Heroicon::UserCircle;
+
+    protected static string|BackedEnum|null $activeNavigationIcon = Heroicon::UserCircle;
 
     protected static ?SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
 
