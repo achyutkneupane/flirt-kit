@@ -5,8 +5,14 @@
          colors="true"
 >
     <testsuites>
-        <testsuite name="All Tests">
-            <directory>tests</directory>
+        <testsuite name="Arch Tests">
+            <file>tests/ArchTest.php</file>
+        </testsuite>
+        <testsuite name="Feature Tests">
+            <directory>tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Unit Tests">
+            <directory>tests/Unit</directory>
         </testsuite>
     </testsuites>
     <source>
