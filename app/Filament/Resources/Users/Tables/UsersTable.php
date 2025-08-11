@@ -41,7 +41,7 @@ final class UsersTable
             ])
             ->filters([
                 SelectFilter::make('role')
-                    ->options(UserRole::class)
+                    ->options(UserRole::class),
             ])
             ->deferFilters(false)
             ->deferColumnManager(false)
