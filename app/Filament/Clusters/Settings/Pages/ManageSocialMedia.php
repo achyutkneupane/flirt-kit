@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Clusters\Settings\Pages;
 
 use App\Enums\UserRole;
@@ -12,13 +14,20 @@ use Filament\Pages\SettingsPage;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 
-class ManageSocialMedia extends SettingsPage
+final class ManageSocialMedia extends SettingsPage
 {
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Squares2x2;
-    protected static string | BackedEnum | null $activeNavigationIcon = Heroicon::OutlinedSquares2x2;
+
+    protected static string|BackedEnum|null $activeNavigationIcon = Heroicon::OutlinedSquares2x2;
 
     protected static string $settings = SocialMediaSettings::class;
+
     protected static ?string $cluster = SettingsCluster::class;
+
+    public static function canAccess(): bool
+    {
+        return auth()->user()->role !== UserRole::User;
+    }
 
     /**
      * @throws Exception
@@ -53,12 +62,7 @@ class ManageSocialMedia extends SettingsPage
                     ->prefix('https://www.youtube.com/@'),
                 TextInput::make('github')
                     ->label('GitHub')
-                    ->prefix('https://www.github.com/')
+                    ->prefix('https://www.github.com/'),
             ]);
-    }
-
-    public static function canAccess(): bool
-    {
-        return auth()->user()->role !== UserRole::User;
     }
 }

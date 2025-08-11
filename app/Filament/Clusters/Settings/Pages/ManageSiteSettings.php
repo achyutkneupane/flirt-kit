@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Clusters\Settings\Pages;
 
 use App\Filament\Clusters\Settings\SettingsCluster;
@@ -12,10 +14,11 @@ use Filament\Pages\SettingsPage;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 
-class ManageSiteSettings extends SettingsPage
+final class ManageSiteSettings extends SettingsPage
 {
     protected static string|BackedEnum|null $navigationIcon = Heroicon::GlobeAlt;
-    protected static string | BackedEnum | null $activeNavigationIcon = Heroicon::OutlinedGlobeAlt;
+
+    protected static string|BackedEnum|null $activeNavigationIcon = Heroicon::OutlinedGlobeAlt;
 
     protected static string $settings = SiteSettings::class;
 
