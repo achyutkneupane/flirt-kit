@@ -5,7 +5,7 @@ import { createRoot } from "react-dom/client";
 export const appName = import.meta.env.VITE_APP_NAME || "Filament & Inertia Kit";
 
 createInertiaApp({
-    title: (title) => `${title ? `${title} - ` : ""}${appName}`,
+    title: (title) => title ? `${title} - ${appName}` : appName,
     resolve: (name) => resolvePageComponent(`./Pages/${name}.tsx`, import.meta.glob("./Pages/**/*.tsx")),
     setup({ el, App, props }) {
         const root = createRoot(el);

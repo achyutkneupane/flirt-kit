@@ -13,7 +13,7 @@ final class LandingPageRenderer extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request): Response
+    public function __invoke(): Response
     {
         return Inertia::render('LandingPage');
     }

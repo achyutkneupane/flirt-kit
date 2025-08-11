@@ -1,7 +1,7 @@
 import ThemeContext from "@/Context/ThemeContext";
 import { Theme } from "@/Types/Enums";
 import type { LayoutProps } from "@/Types/Types";
-import { type FC, useEffect, useState } from "react";
+import {type FC, useEffect, useMemo, useState} from "react";
 
 const ThemeWrapper: FC<LayoutProps> = (props) => {
     const { children } = props;
@@ -40,15 +40,17 @@ const ThemeWrapper: FC<LayoutProps> = (props) => {
 
     useEffect(toggleThemeInDOMAndLocalStorage, [theme]);
 
+    const memoizedValue = useMemo(() => ({
+        theme: theme,
+        systemTheme: systemTheme,
+        isDarkMode: isDarkMode,
+        setTheme: setTheme,
+        toggleTheme: toggleTheme,
+    }), [theme, systemTheme]);
+
     return (
         <ThemeContext.Provider
-            value={{
-                theme: theme,
-                systemTheme: systemTheme,
-                isDarkMode: isDarkMode,
-                setTheme: setTheme,
-                toggleTheme: toggleTheme,
-            }}
+            value={memoizedValue}
         >
             {children}
         </ThemeContext.Provider>
