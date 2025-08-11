@@ -35,6 +35,7 @@ final class ManageSiteSettings extends SettingsPage
                 TextInput::make('description'),
                 FileUpload::make('logo')
                     ->image()
+                    ->disk('public')
                     ->imageEditor()
                     ->openable()
                     ->preserveFilenames()
@@ -43,6 +44,7 @@ final class ManageSiteSettings extends SettingsPage
                     ->deletable(),
                 FileUpload::make('favicon')
                     ->image()
+                    ->disk('public')
                     ->imageEditor()
                     ->imageCropAspectRatio('1:1')
                     ->maxWidth('50')
@@ -60,6 +62,7 @@ final class ManageSiteSettings extends SettingsPage
                     ]),
                 FileUpload::make('og_image')
                     ->image()
+                    ->disk('public')
                     ->imageEditor()
                     ->imageCropAspectRatio('40:21')
                     ->openable()

@@ -6,6 +6,7 @@ namespace App\Providers\Filament;
 
 use AchyutN\FilamentLogViewer\FilamentLogViewer;
 use App\Enums\UserRole;
+use App\Settings\SiteSettings;
 use Awcodes\Gravatar\GravatarPlugin;
 use Awcodes\Gravatar\GravatarProvider;
 use Exception;
@@ -30,9 +31,19 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Joaopaulolndev\FilamentEditProfile\FilamentEditProfilePlugin;
 use Joaopaulolndev\FilamentEditProfile\Pages\EditProfilePage;
 use pxlrbt\FilamentEnvironmentIndicator\EnvironmentIndicatorPlugin;
+use Spatie\LaravelSettings\Settings;
 
 final class AdminPanelProvider extends PanelProvider
 {
+    /** @var Settings $settings */
+    protected Settings $settings;
+    public function __construct($app)
+    {
+        parent::__construct($app);
+
+        $this->settings = app(SiteSettings::class);
+    }
+
     /**
      * @throws Exception
      */
@@ -42,6 +53,10 @@ final class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
+            ->brandName($this->settings->name)
+            ->brandLogo($this->settings->logo ? "/".$this->settings->logo : null)
+            ->brandLogoHeight("3rem")
+            ->favicon($this->settings->favicon ? "/".$this->settings->favicon : null)
             ->login()
             ->colors([
                 'primary' => Color::hex('#fc6a3e'),
