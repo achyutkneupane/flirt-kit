@@ -2,7 +2,7 @@ import {FloatingDockItem, SocialMediaSetting} from "@/Types/Types";
 import { ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import {SocialMedia} from "@/Types/Enums";
-import {SocialMediaIcons, SocialMediaPrefix} from "@/Lib/EnumConstants";
+import {SocialMediaIcons, SocialMediaLabels, SocialMediaPrefix} from "@/Lib/EnumConstants";
 
 export const cn = (...inputs: ClassValue[]) => {
     return twMerge(clsx(inputs));
@@ -21,10 +21,11 @@ export const filterAndReturnSocialMediaLinks = (socialMedia: SocialMediaSetting)
         .filter(([_, value]) => value && value.trim().length > 0)
         .map(([key, value]) => {
             const mediaKey = key as SocialMedia;
+            const title = SocialMediaLabels[mediaKey];
             const prefix = SocialMediaPrefix[mediaKey];
             const icon = SocialMediaIcons[mediaKey];
             return {
-                title: mediaKey,
+                title,
                 icon,
                 href: prefix + value,
             };
