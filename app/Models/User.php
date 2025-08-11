@@ -8,6 +8,7 @@ use App\Enums\UserRole;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -15,6 +16,7 @@ final class User extends Authenticatable implements FilamentUser
 {
     use HasFactory;
     use Notifiable;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -39,7 +41,12 @@ final class User extends Authenticatable implements FilamentUser
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return auth()->check();
+        // Update this method to control access to the Filament panel.
+        // Here, we allow access only to users with the Developer or Admin role.
+        return in_array($this->role, [
+            UserRole::Developer,
+            UserRole::Admin,
+        ]);
     }
 
     /** @returns array<int, UserRole> */

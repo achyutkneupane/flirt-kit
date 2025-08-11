@@ -1,3 +1,4 @@
+import FloatingSocialMedia from "@/Components/Shared/FloatingSocialMedia";
 import Navbar from "@/Components/Shared/Navbar";
 import { cn } from "@/Lib/Utils";
 import { LayoutProps } from "@/Types/Types";
@@ -36,6 +37,7 @@ const FrontWrapper: FC<LayoutProps> = (props) => {
             >
                 <div className="mx-auto max-w-7xl">{children}</div>
             </div>
+            <FloatingSocialMedia />
         </ThemeWrapper>
     );
 };
