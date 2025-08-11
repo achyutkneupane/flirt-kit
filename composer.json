@@ -3,7 +3,14 @@
     "name": "achyutn/flirt-kit",
     "type": "project",
     "description": "The skeleton application for the Laravel framework with RILT stack and Filament v4 as Admin Panel.",
-    "keywords": ["laravel", "framework", "filament", "flirt-kit", "starter-kit", "rilt"],
+    "keywords": [
+        "laravel",
+        "framework",
+        "filament",
+        "flirt-kit",
+        "starter-kit",
+        "rilt"
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.3",

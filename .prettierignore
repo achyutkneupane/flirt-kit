@@ -6,3 +6,4 @@ public/*
 *.yml
 composer.json
 composer.lock
+.husky
