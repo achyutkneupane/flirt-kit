@@ -46,6 +46,17 @@ jobs:
           cp .env.example .env
           php artisan key:generate
 
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.2.20
+
+      - name: Install bun dependencies
+        run: bun update
+
+      - name: Build manifest
+        run: bun run build
+
       - name: "Run Rector"
         run: |
           ./vendor/bin/rector process --dry-run --config=rector.php
