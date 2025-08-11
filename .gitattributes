@@ -9,6 +9,7 @@
 *.ts diff=typescript
 *.js diff=javascript
 
-/.github export-ignore
+/.github/* export-ignore
+!/.github/workflows/prlint.yml
 CHANGELOG.md export-ignore
 .styleci.yml export-ignore
