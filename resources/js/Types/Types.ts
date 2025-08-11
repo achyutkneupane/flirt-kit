@@ -1,6 +1,6 @@
 import { SocialMedia } from "@/Types/Enums";
+import { IconType } from "@icons-pack/react-simple-icons";
 import { type ReactNode } from "react";
-import {IconType} from "@icons-pack/react-simple-icons";
 
 export interface LayoutProps {
     children: ReactNode;
@@ -9,6 +9,7 @@ export interface LayoutProps {
 
 export interface SharedData {
     socialMediaSettings: SocialMediaSetting;
+    siteSettings: SiteSetting;
 
     [key: string]: unknown;
 }
@@ -16,6 +17,14 @@ export interface SharedData {
 export type SocialMediaSetting = {
     [key in SocialMedia]: string | null;
 };
+
+export interface SiteSetting {
+    name:        string;
+    description: string;
+    logo:        string;
+    favicon:     string;
+    og_image:    string;
+}
 
 export interface FloatingDockItem {
     title: string;

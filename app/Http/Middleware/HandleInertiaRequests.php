@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Middleware;
 
+use App\Settings\SiteSettings;
+use App\Settings\SocialMediaSettings;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -37,6 +39,15 @@ final class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        return array_merge(parent::share($request), []);
+        $siteSettings = app(SiteSettings::class);
+        $socialMediaSettings = app(SocialMediaSettings::class);
+
+        return array_merge(parent::share($request),
+            compact(
+                'socialMediaSettings',
+                'siteSettings'
+            ), [
+                //
+            ]);
     }
 }

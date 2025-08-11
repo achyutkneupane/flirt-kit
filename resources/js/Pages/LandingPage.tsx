@@ -1,8 +1,11 @@
 import { cn } from "@/Lib/Utils";
 import FrontWrapper from "@/Wrappers/FrontWrapper";
 import { ReactNode } from "react";
+import {usePage} from "@inertiajs/react";
+import {SharedData} from "@/Types/Types";
 
 const LandingPage = () => {
+    const { siteSettings } = usePage<SharedData>().props;
     const appName = import.meta.env.VITE_APP_NAME || "Filament & Inertia Kit";
 
     return (
@@ -19,7 +22,7 @@ const LandingPage = () => {
                 "font-bold",
             )}
         >
-            {appName}
+            {siteSettings.name ?? appName}
         </div>
     );
 };

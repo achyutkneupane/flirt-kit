@@ -1,8 +1,8 @@
-import {FloatingDockItem, SocialMediaSetting} from "@/Types/Types";
+import { SocialMediaIcons, SocialMediaLabels, SocialMediaPrefix } from "@/Lib/EnumConstants";
+import { SocialMedia } from "@/Types/Enums";
+import { FloatingDockItem, SocialMediaSetting } from "@/Types/Types";
 import { ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import {SocialMedia} from "@/Types/Enums";
-import {SocialMediaIcons, SocialMediaLabels, SocialMediaPrefix} from "@/Lib/EnumConstants";
 
 export const cn = (...inputs: ClassValue[]) => {
     return twMerge(clsx(inputs));

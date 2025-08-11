@@ -1,15 +1,5 @@
 import { SocialMedia } from "@/Types/Enums";
-import {
-    IconType,
-    SiFacebook,
-    SiGithub,
-    SiInstagram,
-    SiMedium,
-    SiTiktok,
-    SiWhatsapp,
-    SiX,
-    SiYoutube
-} from "@icons-pack/react-simple-icons";
+import { IconType, SiFacebook, SiGithub, SiInstagram, SiMedium, SiTiktok, SiWhatsapp, SiX, SiYoutube } from "@icons-pack/react-simple-icons";
 import { Linkedin } from "lucide-react";
 
 export const SocialMediaLabels: Record<SocialMedia, string> = {
