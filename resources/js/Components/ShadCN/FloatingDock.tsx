@@ -2,7 +2,7 @@ import { AnimatePresence, MotionValue, motion, useMotionValue, useSpring, useTra
 
 import { cn } from "@/Lib/Utils";
 import { FloatingDockItem } from "@/Types/Types";
-import { Link } from "lucide-react";
+import {Link, XIcon} from "lucide-react";
 import { useRef, useState } from "react";
 
 interface IconContainerProps extends FloatingDockItem {
@@ -53,11 +53,12 @@ const FloatingDockMobile = ({ items, className }: { items: FloatingDockItem[]; c
                                     transition={{ delay: (items.length - 1 - idx) * 0.05 }}
                                 >
                                     <a
+                                        target="_blank"
                                         href={item.href}
                                         key={item.title}
-                                        className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900"
+                                        className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-200"
                                     >
-                                        <div className="h-4 w-4"><Icon /></div>
+                                        <Icon />
                                     </a>
                                 </motion.div>
                             );
@@ -66,7 +67,7 @@ const FloatingDockMobile = ({ items, className }: { items: FloatingDockItem[]; c
                 )}
             </AnimatePresence>
             <button onClick={() => setOpen(!open)} className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-800">
-                <Link className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
+                {open ? (<XIcon className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />) : (<Link className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />)}
             </button>
         </div>
     );
@@ -127,7 +128,9 @@ const IconContainer = ({ mouseX, title, icon: Icon, href }: IconContainerProps) 
     const [hovered, setHovered] = useState(false);
 
     return (
-        <a href={href}>
+        <a href={href}
+           target="_blank"
+        >
             <motion.div
                 ref={ref}
                 style={{ width, height }}
@@ -147,7 +150,7 @@ const IconContainer = ({ mouseX, title, icon: Icon, href }: IconContainerProps) 
                         </motion.div>
                     )}
                 </AnimatePresence>
-                <motion.div style={{ width: widthIcon, height: heightIcon }} className="flex items-center justify-center text-neutral-600">
+                <motion.div style={{ width: widthIcon, height: heightIcon }} className="flex items-center justify-center text-neutral-600 dark:text-neutral-200">
                     <Icon />
                 </motion.div>
             </motion.div>
