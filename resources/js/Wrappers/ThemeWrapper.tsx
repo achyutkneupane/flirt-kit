@@ -6,7 +6,7 @@ import {type FC, useEffect, useMemo, useState} from "react";
 const ThemeWrapper: FC<LayoutProps> = (props) => {
     const { children } = props;
 
-    const themeVariable: string = "FilamentInertiaKitTheme";
+    const themeVariable: string = "FLIRT_THEME";
 
     const storedTheme = localStorage.getItem(themeVariable);
     const [theme, setTheme] = useState<Theme>(storedTheme ? (storedTheme as Theme) : Theme.System);

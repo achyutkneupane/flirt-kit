@@ -7,3 +7,17 @@ This is a starter kit for building modern web applications using Filament as adm
 
 ## Installation
 
+You can create a new Laravel project using this starter kit by running the following command:
+
+```shell
+laravel new --using=achyutn/flirt-kit
+```
+
+You will be asked to enter the name of your project. After that, the installation will proceed, and you will have a new Laravel project set up with Filament, Inertia.js, React, and Tailwind CSS with an attractive front layout looking like this:
+
+![FLIRT Starter Kit (Dark Mode)](https://hamrocdn.com/qiTLizuxSgvs)
+![FLIRT Starter Kit (Light Mode)](https://hamrocdn.com/13tZhdGukQYc)
+
+And filament admin panel with ready-to-use log viewer, User resource, environment indicator, configurable settings:
+
+![FLIRT Starter Kit Filament Admin Panel](https://hamrocdn.com/fEZKIPZEINZe)
