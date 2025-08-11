@@ -10,5 +10,7 @@ it('renders LandingPage when / is requested', function (): void {
     $response->assertOk();
     $response->assertInertia(fn (AssertableInertia $assertableInertia): AssertableInertia => $assertableInertia
         ->component('LandingPage')
+        ->has('siteSettings')
+        ->has('socialMediaSettings')
     );
 });
