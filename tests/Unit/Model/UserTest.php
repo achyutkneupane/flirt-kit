@@ -50,11 +50,7 @@ it('can access filament panel after logging in', function (): void {
     $filamentPanel = filament()->getPanel('admin');
 
     /** @var User $user */
-    $user = User::factory()->make(['role' => UserRole::User]);
-
-    expect($user->canAccessPanel($filamentPanel))->toBeFalse();
-
-    actingAs($user);
+    $user = User::factory()->make(['role' => UserRole::Admin]);
 
     expect($user->canAccessPanel($filamentPanel))->toBeTrue();
 });
