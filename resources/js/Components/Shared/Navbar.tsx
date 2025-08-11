@@ -1,18 +1,20 @@
 import ThemeToggler from "@/Components/Components/ThemeToggler";
 import useTheme from "@/Hooks/useTheme";
-import { cn } from "@/Lib/Utils";
-import { SiGithub } from "@icons-pack/react-simple-icons";
-import { motion } from "motion/react";
+import {cn} from "@/Lib/Utils";
+import {SiGithub} from "@icons-pack/react-simple-icons";
+import {motion} from "motion/react";
 import {usePage} from "@inertiajs/react";
 import {SharedData} from "@/Types/Types";
 
 const Navbar = () => {
-    const { siteSettings } = usePage<SharedData>().props;
+    const {siteSettings} = usePage<SharedData>().props;
     const appName = import.meta.env.VITE_APP_NAME || "Filament & Inertia Kit";
-    const { isDarkMode } = useTheme();
+    const {isDarkMode} = useTheme();
 
     const githubLink = "https://github.com/achyutkneupane/filament-inertia-kit";
     const iconClass = "cursor-pointer text-neutral-800 dark:text-neutral-300";
+
+    const hasLogo = siteSettings.logo && siteSettings.logo !== "";
 
     return (
         <motion.div
@@ -30,36 +32,42 @@ const Navbar = () => {
             animate={
                 isDarkMode
                     ? {
-                          y: 0,
-                          backgroundColor: "#00000050",
-                          backdropFilter: "blur(4px)",
-                          WebkitBackdropFilter: "blur(4px)",
-                      }
+                        y: 0,
+                        backgroundColor: "#00000050",
+                        backdropFilter: "blur(4px)",
+                        WebkitBackdropFilter: "blur(4px)",
+                    }
                     : {
-                          y: 0,
-                          backgroundColor: "#ffffff20",
-                          backdropFilter: "blur(4px)",
-                          WebkitBackdropFilter: "blur(4px)",
-                      }
+                        y: 0,
+                        backgroundColor: "#ffffff20",
+                        backdropFilter: "blur(4px)",
+                        WebkitBackdropFilter: "blur(4px)",
+                    }
             }
-            transition={{ duration: 0.5 }}
+            transition={{duration: 0.5}}
         >
-            <h1
-                className={cn(
-                    "relative bg-gradient-to-r font-bold text-transparent",
-                    "select-none",
-                    "text-xl md:text-2xl lg:text-3xl",
-                    "from-neutral-700 to-neutral-400 bg-clip-text",
-                    "dark:from-neutral-400 dark:to-neutral-700",
+            {hasLogo ? (<img
+                src={siteSettings.logo}
+                alt={siteSettings.name ?? appName}
+                className="object-cover max-h-16 max-w-full"
+            />) : (
+                <h1
+                    className={cn(
+                        "relative bg-gradient-to-r font-bold text-transparent",
+                        "select-none",
+                        "text-xl md:text-2xl lg:text-3xl",
+                        "from-neutral-700 to-neutral-400 bg-clip-text",
+                        "dark:from-neutral-400 dark:to-neutral-700",
+                    )}
+                >
+                    {siteSettings.name ?? appName}
+                </h1>
                 )}
-            >
-                {siteSettings.name ?? appName}
-            </h1>
             <div className="flex flex-row items-center justify-end gap-3">
                 <a href={githubLink} target="_blank" rel="noopener noreferrer">
-                    <SiGithub className={iconClass} />
+                    <SiGithub className={iconClass}/>
                 </a>
-                <ThemeToggler className={iconClass} />
+                <ThemeToggler className={iconClass}/>
             </div>
         </motion.div>
     );
