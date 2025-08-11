@@ -19,11 +19,11 @@ export type SocialMediaSetting = {
 };
 
 export interface SiteSetting {
-    name:        string;
+    name: string;
     description: string;
-    logo:        string;
-    favicon:     string;
-    og_image:    string;
+    logo: string;
+    favicon: string;
+    og_image: string;
 }
 
 export interface FloatingDockItem {
