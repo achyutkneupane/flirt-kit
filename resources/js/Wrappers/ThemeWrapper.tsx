@@ -3,55 +3,51 @@ import { Theme } from "@/Types/Enums";
 import type { LayoutProps } from "@/Types/Types";
 import { type FC, useEffect, useMemo, useState } from "react";
 
-const ThemeWrapper: FC<LayoutProps> = (props) => {
-    const { children } = props;
+const ThemeWrapper: FC<LayoutProps> = ({ children }) => {
+    const THEME_KEY: string = "FLIRT_THEME";
 
-    const themeVariable: string = "FLIRT_THEME";
+    const [theme, setTheme] = useState<Theme>(() => {
+        const stored = localStorage.getItem(THEME_KEY);
 
-    const storedTheme = localStorage.getItem(themeVariable);
-    const [theme, setTheme] = useState<Theme>(storedTheme ? (storedTheme as Theme) : Theme.System);
+        return (stored as Theme) || Theme.System;
+    });
 
     const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? Theme.Dark : Theme.Light;
     const isDarkMode = theme === Theme.Dark || (theme === Theme.System && systemTheme === Theme.Dark);
     const toggleTheme = () => {
-        if (theme === Theme.Light) {
-            setTheme(Theme.Dark);
-        } else if (theme === Theme.Dark) {
-            setTheme(Theme.System);
-        } else {
-            setTheme(Theme.Light);
-        }
+        const nextTheme = {
+            [Theme.Light]: Theme.Dark,
+            [Theme.Dark]: Theme.System,
+            [Theme.System]: Theme.Light,
+        }[theme];
+
+        setTheme(nextTheme);
     };
 
-    const toggleThemeInDOMAndLocalStorage = () => {
-        const htmlDOM = document.documentElement;
-        if (theme === Theme.Light) {
-            htmlDOM.classList.remove(Theme.Dark);
-            localStorage.setItem(themeVariable, Theme.Light);
-        } else if (theme === Theme.Dark) {
-            htmlDOM.classList.add(Theme.Dark);
-            localStorage.setItem(themeVariable, Theme.Dark);
-        } else {
-            const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? Theme.Dark : Theme.Light;
-            htmlDOM.classList.toggle(Theme.Dark, systemTheme === Theme.Dark);
-            localStorage.setItem(themeVariable, Theme.System);
+    useEffect(() => {
+        const htmlElement = document.documentElement;
+
+        htmlElement.classList.remove(Theme.Dark);
+
+        if (theme === Theme.Dark || (theme === Theme.System && systemTheme === Theme.Dark)) {
+            htmlElement.classList.add(Theme.Dark);
         }
-    };
 
-    useEffect(toggleThemeInDOMAndLocalStorage, [theme]);
+        localStorage.setItem(THEME_KEY, theme);
+    }, [theme, systemTheme]);
 
-    const memoizedValue = useMemo(
+    const contextValue = useMemo(
         () => ({
-            theme: theme,
-            systemTheme: systemTheme,
-            isDarkMode: isDarkMode,
-            setTheme: setTheme,
-            toggleTheme: toggleTheme,
+            theme,
+            systemTheme,
+            isDarkMode,
+            setTheme,
+            toggleTheme,
         }),
         [theme, systemTheme],
     );
 
-    return <ThemeContext.Provider value={memoizedValue}>{children}</ThemeContext.Provider>;
+    return <ThemeContext.Provider value={contextValue}>{children}</ThemeContext.Provider>;
 };
 
 export default ThemeWrapper;
