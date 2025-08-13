@@ -21,3 +21,23 @@ You will be asked to enter the name of your project. After that, the installatio
 And filament admin panel with ready-to-use log viewer, User resource, environment indicator, configurable settings:
 
 ![FLIRT Starter Kit Filament Admin Panel](https://hamrocdn.com/fEZKIPZEINZe)
+
+## Other Starter Kits
+
+If you want a starter kit with exact Filament admin panel but without RILT setup, visit the [Filament v4 Starter Kit](https://github.com/achyutkneupane/filament-kit).
+
+## License
+
+This package is open-sourced software licensed under the [MIT license](LICENSE.md).
+
+## Changelog
+
+See the [CHANGELOG](CHANGELOG.md) for details on changes made in each version.
+
+## Contributing
+
+Contributions are welcome! Please create a pull request or open an issue if you find any bugs or have feature requests.
+
+## Support
+
+If you find this package useful, please consider starring the repository on GitHub to show your support.
