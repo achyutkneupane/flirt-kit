@@ -10,6 +10,6 @@
 *.js diff=javascript
 
 /.github/* export-ignore
-!/.github/workflows/prlint.yml
+/.github/workflows/tests.yml !export-ignore
 CHANGELOG.md export-ignore
 .styleci.yml export-ignore
