@@ -9,7 +9,7 @@
 *.ts diff=typescript
 *.js diff=javascript
 
-/.github/* export-ignore
-/.github/workflows/tests.yml !export-ignore
+/.github/workflows/tagrelease.yml export-ignore
+/.github/FUNDING.yml export-ignore
 CHANGELOG.md export-ignore
 .styleci.yml export-ignore
