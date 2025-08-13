@@ -18,7 +18,7 @@ export const ucWords = (str: string): string => {
 
 export const filterAndReturnSocialMediaLinks = (socialMedia: SocialMediaSetting): FloatingDockItem[] => {
     return Object.entries(socialMedia)
-        .filter(([_, value]) => value && value.trim().length > 0)
+        .filter(([, value]) => value && value.trim().length > 0)
         .map(([key, value]) => {
             const mediaKey = key as SocialMedia;
             const title = SocialMediaLabels[mediaKey];

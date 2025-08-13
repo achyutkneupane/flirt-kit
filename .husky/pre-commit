@@ -1,5 +1,9 @@
 #!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
 
 composer lint
-./vendor/bin/pest
+
+if command -v bun >/dev/null 2>&1; then
+    bun lint
+elif command -v npm >/dev/null 2>&1; then
+    npm run lint
+fi
