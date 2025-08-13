@@ -24,6 +24,7 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: "Check PR title"
         uses: amannn/action-semantic-pull-request@v5

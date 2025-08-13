@@ -5,7 +5,6 @@
     "scripts": {
         "build": "vite build",
         "dev": "vite",
-        "prepare": "husky install",
         "lint": "eslint . --fix",
         "format": "prettier --write resources/",
         "format:check": "prettier --check resources/"
