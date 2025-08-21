@@ -11,6 +11,10 @@ const FeedbackForm = () => {
         message: "Hey! I installed FLIRT Kit.",
     });
 
+    // Forms in inertia are not supposed to do this way.
+    // I've done this way to call external API.
+    // Ideally, you should use inertia's form handler
+    // Docs: https://inertiajs.com/forms
     const [status, setStatus] = useState<ResponseStatus>("not-initiated");
 
     const handleSubmit = async (event: FormEvent) => {
