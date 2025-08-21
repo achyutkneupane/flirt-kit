@@ -113,6 +113,12 @@ const Button = (props: ButtonProps) => {
         }
     }, [isSuccess, isError, loading]);
 
+    const buttonColor = isError
+        ? "bg-red-600 hover:ring-red-500"
+        : isSuccess
+            ? "bg-green-600 hover:ring-green-500"
+            : "bg-neutral-600 hover:ring-neutral-500";
+
     return (
         <motion.button
             layout
@@ -121,7 +127,7 @@ const Button = (props: ButtonProps) => {
             className={cn(
                 "ring-offset-white dark:ring-offset-black",
                 "flex min-w-[120px] cursor-pointer items-center justify-center gap-2 rounded-full px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2",
-                isError ? "bg-red-600 hover:ring-red-500" : isSuccess ? "bg-green-600 hover:ring-green-500" : "bg-neutral-600 hover:ring-neutral-500",
+                buttonColor,
                 className,
             )}
             {...buttonProps}
