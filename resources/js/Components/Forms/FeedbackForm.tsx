@@ -2,6 +2,7 @@ import Button from "@/Components/Inputs/Button";
 import Input from "@/Components/Inputs/Input";
 import { useForm } from "@inertiajs/react";
 import { FormEvent, useState } from "react";
+import { toast } from "react-toastify";
 
 type ResponseStatus = "not-initiated" | "loading" | "success" | "error";
 
@@ -33,6 +34,7 @@ const FeedbackForm = () => {
                 return response.json();
             })
             .then(() => {
+                toast.success("Thank you for your feedback!");
                 setData("message", "Hey! I installed FLIRT Kit.");
                 setStatus("success");
                 setTimeout(() => {
