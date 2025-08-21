@@ -39,7 +39,7 @@ const FeedbackForm = () => {
                 setStatus("success");
                 setTimeout(() => {
                     setStatus("not-initiated");
-                }, 3000);
+                }, 2500);
                 setError("message", "");
             })
             .catch((error) => {

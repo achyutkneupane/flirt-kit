@@ -113,11 +113,19 @@ const Button = (props: ButtonProps) => {
         }
     }, [isSuccess, isError, loading]);
 
-    const buttonColor = isError
-        ? "bg-red-600 hover:ring-red-500"
-        : isSuccess
-            ? "bg-green-600 hover:ring-green-500"
-            : "bg-neutral-600 hover:ring-neutral-500";
+    function getButtonColor(isError: boolean, isSuccess: boolean): string {
+        if (isError) {
+            return "bg-red-600 hover:ring-red-500";
+        }
+
+        if (isSuccess) {
+            return "bg-green-600 hover:ring-green-500";
+        }
+
+        return "bg-neutral-600 hover:ring-neutral-500";
+    }
+
+    const buttonColor = getButtonColor(isError, isSuccess);
 
     return (
         <motion.button
