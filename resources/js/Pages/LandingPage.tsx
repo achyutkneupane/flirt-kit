@@ -1,3 +1,4 @@
+import FeedbackForm from "@/Components/Forms/FeedbackForm";
 import { cn } from "@/Lib/Utils";
 import { SharedData } from "@/Types/Types";
 import FrontWrapper from "@/Wrappers/FrontWrapper";
@@ -23,6 +24,7 @@ const LandingPage = () => {
                 {siteSettings.name ?? appName}
             </h1>
             <p className={cn("text-neutral-500 dark:text-neutral-400", "text-lg lg:text-xl", "text-center")}>{siteSettings.description}</p>
+            <FeedbackForm />
         </div>
     );
 };

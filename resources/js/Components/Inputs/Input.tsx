@@ -38,7 +38,7 @@ const Input = (props: InputFieldProps) => {
                     />
                 </div>
             </div>
-            <p className={cn("text-base", "text-neutral-800 dark:text-neutral-400", errorMessage && "hidden")}>{helperText}</p>
+            <p className={cn("text-sm", "text-neutral-800 dark:text-neutral-400", errorMessage && "hidden")}>{helperText}</p>
             <p id={`error-${id}`} className={cn("text-laravel-red", className)}>
                 {errorMessage}
             </p>
