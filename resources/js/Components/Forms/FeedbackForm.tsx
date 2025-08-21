@@ -1,28 +1,70 @@
 import Button from "@/Components/Inputs/Button";
 import Input from "@/Components/Inputs/Input";
-import { Form } from "@inertiajs/react";
+import { useForm } from "@inertiajs/react";
+import { FormEvent, useState } from "react";
+
+type ResponseStatus = "not-initiated" | "loading" | "success" | "error";
 
 const FeedbackForm = () => {
     const feedbackEndpoint = "https://flirt-kit.laravelnepal.com/feedback";
+    const { errors, data, setData, setError } = useForm({
+        message: "Hey! I installed FLIRT Kit.",
+    });
+
+    const [status, setStatus] = useState<ResponseStatus>("not-initiated");
+
+    const handleSubmit = async (event: FormEvent) => {
+        event.preventDefault();
+        await fetch(feedbackEndpoint, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then(() => {
+                setData("message", "Hey! I installed FLIRT Kit.");
+                setStatus("success");
+                setTimeout(() => {
+                    setStatus("not-initiated");
+                }, 3000);
+                setError("message", "");
+            })
+            .catch((error) => {
+                setStatus("error");
+                setError("message", error.message);
+            });
+    };
+
     return (
-        <Form className="mt-6 flex w-full max-w-xl flex-col gap-2" action={feedbackEndpoint} method="POST" disableWhileProcessing resetOnSuccess>
-            {({ errors, hasErrors, processing, wasSuccessful }) => (
-                <>
-                    <Input
-                        type="text"
-                        name="message"
-                        label="Show some love "
-                        errorMessage={errors.message}
-                        defaultValue="Hey! I installed FLIRT Kit."
-                        autoFocus
-                        helperText="Feedbacks are appreciated."
-                    />
-                    <Button loading={processing} isSuccess={wasSuccessful} isError={hasErrors} className="w-full">
-                        Submit
-                    </Button>
-                </>
-            )}
-        </Form>
+        <form className="mt-6 flex w-full max-w-xl flex-col gap-2" onSubmit={handleSubmit}>
+            <Input
+                type="text"
+                name="message"
+                label="Show some love "
+                value={data.message}
+                onChange={(e) => setData("message", e.target.value)}
+                errorMessage={errors.message}
+                autoFocus
+                helperText="Feedbacks are appreciated."
+            />
+            <Button
+                loading={status === "loading"}
+                className="w-full"
+                isSuccess={status === "success"}
+                isError={status === "error"}
+                type="submit"
+                onClick={() => setStatus("loading")}
+            >
+                Submit
+            </Button>
+        </form>
     );
 };
 
