@@ -11,7 +11,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @if($siteSettings->favicon)
-        <link rel="shortcut icon" type="image/x-icon" href="{{ asset($siteSettings->favicon) }}">
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset("storage/" . $siteSettings->favicon) }}">
     @endif
     @if(config('app.env') !== 'production')
         <meta name="robots" content="noindex, nofollow">
@@ -26,14 +26,14 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
     @if($siteSettings->og_image)
-        <meta property="og:image" content="{{ asset($siteSettings->og_image) }}">
+        <meta property="og:image" content="{{ asset("storage/" . $siteSettings->og_image) }}">
     @endif
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="{{ $siteSettings->name }}">
     <meta name="twitter:title" content="{{ $siteSettings->name }}">
     <meta name="twitter:description" content="{{ $siteSettings->description }}">
     @if($siteSettings->og_image)
-        <meta name="twitter:image" content="{{ asset($siteSettings->og_image) }}">
+        <meta name="twitter:image" content="{{ asset("storage/" . $siteSettings->og_image) }}">
     @endif
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
