@@ -18,6 +18,10 @@ final class SiteSettings extends Settings
 
     public ?string $og_image;
 
+    public ?string $header_scripts;
+
+    public ?string $footer_scripts;
+
     public static function group(): string
     {
         return 'site';
