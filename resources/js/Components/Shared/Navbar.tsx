@@ -3,8 +3,9 @@ import useTheme from "@/Hooks/useTheme";
 import { cn } from "@/Lib/Utils";
 import { SharedData } from "@/Types/Types";
 import { SiGithub } from "@icons-pack/react-simple-icons";
-import { usePage } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import { motion } from "motion/react";
+import { route } from "ziggy-js";
 
 const Navbar = () => {
     const { siteSettings } = usePage<SharedData>().props;
@@ -62,7 +63,10 @@ const Navbar = () => {
                 </h1>
             )}
             <div className="flex flex-row items-center justify-end gap-3">
-                <a href={githubLink} target="_blank" rel="noopener noreferrer">
+                <Link href={route("contact.form")} target="_blank" rel="noopener noreferrer" className="text-black dark:text-white">
+                    Contact Us
+                </Link>
+                <a href={githubLink} target="_blank" rel="noopener noreferrer" className="ml-8">
                     <SiGithub className={iconClass} />
                 </a>
                 <ThemeToggler className={iconClass} />

@@ -13,6 +13,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Pages\SettingsPage;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
+use Override;
 
 final class ManageSocialMedia extends SettingsPage
 {
@@ -32,6 +33,7 @@ final class ManageSocialMedia extends SettingsPage
     /**
      * @throws Exception
      */
+    #[Override]
     public function form(Schema $schema): Schema
     {
         return $schema

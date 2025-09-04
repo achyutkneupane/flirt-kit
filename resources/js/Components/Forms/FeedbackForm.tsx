@@ -16,6 +16,7 @@ const FeedbackForm = () => {
     // I've done this way to call external API.
     // Ideally, you should use inertia's form handler
     // Docs: https://inertiajs.com/forms
+    // Example: ContactForm.tsx
     const [status, setStatus] = useState<ResponseStatus>("not-initiated");
 
     const handleSubmit = async (event: FormEvent) => {

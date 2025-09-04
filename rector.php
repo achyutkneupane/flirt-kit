@@ -41,7 +41,7 @@ return static function (RectorConfig $rectorConfig): void {
         LaravelSetList::LARAVEL_COLLECTION,
         LaravelSetList::LARAVEL_ELOQUENT_MAGIC_METHOD_TO_QUERY_BUILDER,
         SetList::CODE_QUALITY,
-        SetList::PHP_84,
+        SetList::PHP_83,
         SetList::CODING_STYLE,
         SetList::DEAD_CODE,
         SetList::NAMING,
@@ -50,5 +50,5 @@ return static function (RectorConfig $rectorConfig): void {
     ]);
 
     // Define PHP version for Rector
-    $rectorConfig->phpVersion(PhpVersion::PHP_84);
+    $rectorConfig->phpVersion(PhpVersion::PHP_83);
 };
