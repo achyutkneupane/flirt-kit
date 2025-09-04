@@ -1,10 +1,10 @@
 import { cn } from "@/Lib/Utils";
-import { type InputFieldProps } from "@/Types/Inputs";
+import { type TextAreaProps } from "@/Types/Inputs";
 
-const Input = (props: InputFieldProps) => {
-    const { className, type, label, errorMessage, id, helperText, wrapperClassName, ...rest } = props;
+const TextArea = (props: TextAreaProps) => {
+    const { className, label, errorMessage, id, helperText, wrapperClassName, ...rest } = props;
     return (
-        <div className={cn("flex w-full flex-col gap-1", wrapperClassName)}>
+        <div className={cn("flex flex-col gap-1", "w-full", "mt-4", wrapperClassName)}>
             <div className="flex flex-row gap-2">
                 <label className={cn("text-neutral-800 dark:text-neutral-400", errorMessage && "text-red-500", className)} htmlFor={id}>
                     {label}
@@ -12,9 +12,8 @@ const Input = (props: InputFieldProps) => {
             </div>
             <div className="flex flex-row items-center justify-start gap-2">
                 <div className="relative w-full">
-                    <input
+                    <textarea
                         ref={rest.ref}
-                        type={type}
                         className={cn(
                             "flex w-full",
                             "px-3 py-2",
@@ -31,7 +30,7 @@ const Input = (props: InputFieldProps) => {
                         )}
                         id={id}
                         {...rest}
-                    />
+                    ></textarea>
                 </div>
             </div>
             <p className={cn("text-sm", "text-neutral-800 dark:text-neutral-400", errorMessage && "hidden")}>{helperText}</p>
@@ -41,6 +40,6 @@ const Input = (props: InputFieldProps) => {
         </div>
     );
 };
-Input.displayName = "Input";
+TextArea.displayName = "TextArea";
 
-export default Input;
+export default TextArea;

@@ -5,6 +5,15 @@ export interface InputFieldProps extends ComponentProps<"input"> {
     errorMessage?: string;
     name: string;
     helperText?: string;
+    wrapperClassName?: string;
+}
+
+export interface TextAreaProps extends ComponentProps<"textarea"> {
+    label?: string;
+    errorMessage?: string;
+    name: string;
+    helperText?: string;
+    wrapperClassName?: string;
 }
 
 export interface ButtonProps

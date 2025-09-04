@@ -63,7 +63,7 @@ const Navbar = () => {
                 </h1>
             )}
             <div className="flex flex-row items-center justify-end gap-3">
-                <Link href={route("contact-form")} target="_blank" rel="noopener noreferrer" className="text-black dark:text-white">
+                <Link href={route("contact.form")} target="_blank" rel="noopener noreferrer" className="text-black dark:text-white">
                     Contact Us
                 </Link>
                 <a href={githubLink} target="_blank" rel="noopener noreferrer" className="ml-8">
