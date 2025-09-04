@@ -7,7 +7,7 @@ import { ReactNode } from "react";
 
 const LandingPage = () => {
     const { siteSettings } = usePage<SharedData>().props;
-    const appName = import.meta.env.VITE_APP_NAME || "Filament & Inertia Kit";
+    const appName = import.meta.env.VITE_APP_NAME || "FLIRT Kit";
 
     return (
         <div

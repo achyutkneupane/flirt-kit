@@ -9,7 +9,7 @@ import { route } from "ziggy-js";
 
 const Navbar = () => {
     const { siteSettings } = usePage<SharedData>().props;
-    const appName = import.meta.env.VITE_APP_NAME || "Filament & Inertia Kit";
+    const appName = import.meta.env.VITE_APP_NAME || "FLIRT Kit";
     const { isDarkMode } = useTheme();
 
     const githubLink = "https://github.com/achyutkneupane/filament-inertia-kit";
