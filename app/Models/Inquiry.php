@@ -16,6 +16,7 @@ final class Inquiry extends Model
      */
     public function replies(): HasMany
     {
-        return $this->hasMany(InquiryReply::class);
+        return $this->hasMany(InquiryReply::class)
+            ->orderByDesc('created_at');
     }
 }

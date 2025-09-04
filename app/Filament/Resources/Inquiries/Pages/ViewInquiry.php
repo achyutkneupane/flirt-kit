@@ -8,7 +8,7 @@ use App\Actions\ReplyToInquiry;
 use App\Filament\Resources\Inquiries\InquiryResource;
 use App\Models\Inquiry;
 use App\Models\InquiryReply;
-use Filament\Actions\CreateAction;
+use Filament\Actions\Action;
 use Filament\Forms\Components\RichEditor;
 use Filament\Resources\Pages\ViewRecord;
 
@@ -19,7 +19,7 @@ final class ViewInquiry extends ViewRecord
     protected function getHeaderActions(): array
     {
         return [
-            CreateAction::make()
+            Action::make('reply-to-inquiry')
                 ->model(InquiryReply::class)
                 ->label('Reply')
                 ->schema([
@@ -27,7 +27,6 @@ final class ViewInquiry extends ViewRecord
                         ->required()
                         ->columnSpanFull(),
                 ])
-                ->createAnother(false)
                 ->action(fn (Inquiry $inquiry, array $data): InquiryReply => (new ReplyToInquiry())->execute($inquiry, $data))
                 ->successNotificationTitle('Reply Sent'),
         ];
