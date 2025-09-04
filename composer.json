@@ -17,7 +17,7 @@
         "achyutn/filament-log-viewer": "^1",
         "awcodes/filament-gravatar": "^3.0",
         "filament/filament": "^4",
-        "filament/spatie-laravel-media-library-plugin": "^3.3",
+        "filament/spatie-laravel-media-library-plugin": "^4.0",
         "filament/spatie-laravel-settings-plugin": "^4.0",
         "inertiajs/inertia-laravel": "^2.0",
         "joaopaulolndev/filament-edit-profile": "^2.0",
