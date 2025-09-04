@@ -4,29 +4,29 @@ import type { LayoutProps } from "@/Types/Types";
 import { type FC, useEffect, useMemo, useState } from "react";
 
 const systemIsDark = () => {
-    if (typeof window === 'undefined') {
+    if (typeof window === "undefined") {
         return false;
     }
 
     return window?.matchMedia("(prefers-color-scheme: dark)").matches;
-}
+};
 
 const localStorageHandler = {
     get: (key: string) => {
-        if (typeof window === 'undefined') {
+        if (typeof window === "undefined") {
             return null;
         }
 
         return localStorage.getItem(key);
     },
     set: (key: string, value: string) => {
-        if (typeof window === 'undefined') {
+        if (typeof window === "undefined") {
             return;
         }
 
         localStorage.setItem(key, value);
-    }
-}
+    },
+};
 
 const ThemeWrapper: FC<LayoutProps> = ({ children }) => {
     const THEME_KEY: string = "FLIRT_THEME";
@@ -36,10 +36,6 @@ const ThemeWrapper: FC<LayoutProps> = ({ children }) => {
 
         return (stored as Theme) || Theme.System;
     });
-
-    if (typeof window === 'undefined') {
-        return false;
-    }
 
     const systemTheme = systemIsDark() ? Theme.Dark : Theme.Light;
     const isDarkMode = theme === Theme.Dark || (theme === Theme.System && systemTheme === Theme.Dark);

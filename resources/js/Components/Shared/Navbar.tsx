@@ -47,7 +47,7 @@ const Navbar = () => {
             }
             transition={{ duration: 0.5 }}
         >
-            <Link href={route('landing-page')} className="flex items-center gap-3" prefetch cacheFor={60}>
+            <Link href={route("landing-page")} className="flex items-center gap-3" prefetch cacheFor={60}>
                 {hasLogo ? (
                     <img src={siteSettings.logo} alt={siteSettings.name ?? appName} className="max-h-16 max-w-full object-cover" />
                 ) : (
@@ -65,7 +65,14 @@ const Navbar = () => {
                 )}
             </Link>
             <div className="flex flex-row items-center justify-end gap-3">
-                <Link href={route("contact.form")} target="_blank" rel="noopener noreferrer" className="text-black dark:text-white" prefetch cacheFor={60}>
+                <Link
+                    href={route("contact.form")}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-black dark:text-white"
+                    prefetch
+                    cacheFor={60}
+                >
                     Contact Us
                 </Link>
                 <a href={githubLink} target="_blank" rel="noopener noreferrer" className="ml-8">
