@@ -17,7 +17,7 @@
         "achyutn/filament-log-viewer": "^1",
         "awcodes/filament-gravatar": "^3.0",
         "filament/filament": "^4",
-        "filament/spatie-laravel-media-library-plugin": "^3.3",
+        "filament/spatie-laravel-media-library-plugin": "^4.0",
         "filament/spatie-laravel-settings-plugin": "^4.0",
         "inertiajs/inertia-laravel": "^2.0",
         "joaopaulolndev/filament-edit-profile": "^2.0",
@@ -59,13 +59,14 @@
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
         "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "npx husky init",
+            "mv -f .husky/pre-commit.example .husky/pre-commit"
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi",
             "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
-            "@php artisan migrate --graceful --ansi",
-            "npx husky init"
+            "@php artisan migrate --graceful --ansi"
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
