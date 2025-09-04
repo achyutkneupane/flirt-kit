@@ -61,7 +61,7 @@
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
             "npx husky init",
-            "cp .husky/pre-commit{.example,}"
+            "mv -f .husky/pre-commit.example .husky/pre-commit"
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi",
