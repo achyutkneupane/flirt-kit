@@ -4,7 +4,7 @@ import { type TextAreaProps } from "@/Types/Inputs";
 const TextArea = (props: TextAreaProps) => {
     const { className, label, errorMessage, id, helperText, wrapperClassName, ...rest } = props;
     return (
-        <div className={cn("flex flex-col gap-1", "w-full", "mt-4", wrapperClassName)}>
+        <div className={cn("flex flex-col gap-1", "w-full", wrapperClassName)}>
             <div className="flex flex-row gap-2">
                 <label className={cn("text-neutral-800 dark:text-neutral-400", errorMessage && "text-red-500", className)} htmlFor={id}>
                     {label}
