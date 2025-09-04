@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\ContactFormRenderer;
 use App\Http\Controllers\LandingPageRenderer;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', LandingPageRenderer::class)->name('landing-page');
+Route::get('/contact-us', ContactFormRenderer::class)->name('contact-form');
