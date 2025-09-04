@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && vite build --ssr",
     "dev": "vite",
     "lint": "eslint . --fix",
     "format": "prettier --write resources/",
