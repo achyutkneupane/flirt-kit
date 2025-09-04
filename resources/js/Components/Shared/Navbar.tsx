@@ -47,23 +47,25 @@ const Navbar = () => {
             }
             transition={{ duration: 0.5 }}
         >
-            {hasLogo ? (
-                <img src={siteSettings.logo} alt={siteSettings.name ?? appName} className="max-h-16 max-w-full object-cover" />
-            ) : (
-                <h1
-                    className={cn(
-                        "relative bg-gradient-to-r font-bold text-transparent",
-                        "select-none",
-                        "text-xl md:text-2xl lg:text-3xl",
-                        "from-neutral-700 to-neutral-400 bg-clip-text",
-                        "dark:from-neutral-400 dark:to-neutral-700",
-                    )}
-                >
-                    {siteSettings.name ?? appName}
-                </h1>
-            )}
+            <Link href={route('landing-page')} className="flex items-center gap-3" prefetch cacheFor={60}>
+                {hasLogo ? (
+                    <img src={siteSettings.logo} alt={siteSettings.name ?? appName} className="max-h-16 max-w-full object-cover" />
+                ) : (
+                    <h1
+                        className={cn(
+                            "relative bg-gradient-to-r font-bold text-transparent",
+                            "select-none",
+                            "text-xl md:text-2xl lg:text-3xl",
+                            "from-neutral-700 to-neutral-400 bg-clip-text",
+                            "dark:from-neutral-400 dark:to-neutral-700",
+                        )}
+                    >
+                        {siteSettings.name ?? appName}
+                    </h1>
+                )}
+            </Link>
             <div className="flex flex-row items-center justify-end gap-3">
-                <Link href={route("contact.form")} target="_blank" rel="noopener noreferrer" className="text-black dark:text-white">
+                <Link href={route("contact.form")} target="_blank" rel="noopener noreferrer" className="text-black dark:text-white" prefetch cacheFor={60}>
                     Contact Us
                 </Link>
                 <a href={githubLink} target="_blank" rel="noopener noreferrer" className="ml-8">
