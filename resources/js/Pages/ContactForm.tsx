@@ -5,6 +5,7 @@ import { cn } from "@/Lib/Utils";
 import FrontWrapper from "@/Wrappers/FrontWrapper";
 import { Form } from "@inertiajs/react";
 import { ReactNode } from "react";
+import { toast } from "react-toastify";
 import { route } from "ziggy-js";
 
 const ContactForm = () => {
@@ -20,7 +21,18 @@ const ContactForm = () => {
             )}
         >
             <h1 className={cn("text-neutral-700 dark:text-neutral-400", "text-4xl lg:text-7xl", "font-bold", "text-center")}>Contact Us</h1>
-            <Form action={route("contact.submit")} method="post" className="grid w-full grid-cols-1 gap-4 lg:grid-cols-2">
+            <Form
+                action={route("contact.submit")}
+                method="post"
+                className="grid w-full grid-cols-1 gap-4 lg:grid-cols-2"
+                onSuccess={() => {
+                    toast.success("Contact form submitted successfully!");
+                }}
+                onError={() => {
+                    toast.error("There was an error submitting the contact form.");
+                }}
+                resetOnSuccess
+            >
                 {({ errors, hasErrors, processing, wasSuccessful }) => (
                     <>
                         <Input
