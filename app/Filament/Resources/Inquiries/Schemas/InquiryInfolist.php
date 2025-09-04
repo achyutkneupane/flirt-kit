@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Filament\Resources\Inquiries\Schemas;
 
-use Filament\Infolists\Components\IconEntry;
+use Filament\Infolists\Components\RepeatableEntry;
 use Filament\Infolists\Components\TextEntry;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 final class InquiryInfolist
@@ -13,19 +14,57 @@ final class InquiryInfolist
     public static function configure(Schema $schema): Schema
     {
         return $schema
+            ->columns(1)
             ->components([
-                TextEntry::make('name'),
-                TextEntry::make('email')
-                    ->label('Email address'),
-                TextEntry::make('phone'),
-                IconEntry::make('is_read')
-                    ->boolean(),
-                TextEntry::make('ip_address'),
-                TextEntry::make('user_agent'),
-                TextEntry::make('created_at')
-                    ->dateTime(),
-                TextEntry::make('updated_at')
-                    ->dateTime(),
+                Section::make('Contact Details')
+                    ->schema([
+                        TextEntry::make('name')
+                            ->label('Name')
+                            ->inlineLabel(),
+                        TextEntry::make('email')
+                            ->label('Email')
+                            ->inlineLabel(),
+                        TextEntry::make('contact_number')
+                            ->label('Contact Number')
+                            ->placeholder('Not provided')
+                            ->inlineLabel(),
+                        TextEntry::make('created_at')
+                            ->label('Received')
+                            ->since()
+                            ->dateTimeTooltip()
+                            ->inlineLabel(),
+                        TextEntry::make('ip_address')
+                            ->label('IP Address')
+                            ->placeholder('Not provided')
+                            ->inlineLabel(),
+                        TextEntry::make('user_agent')
+                            ->label('User Agent')
+                            ->placeholder('Not provided')
+                            ->inlineLabel()
+                            ->wrap(),
+                        TextEntry::make('message')
+                            ->label('Message')
+                            ->columnSpanFull(),
+                    ])
+                    ->columns(),
+                RepeatableEntry::make('replies')
+                    ->schema([
+                        TextEntry::make('user.name')
+                            ->label('Replied By')
+                            ->inlineLabel(),
+                        TextEntry::make('created_at')
+                            ->label('Replied')
+                            ->since()
+                            ->dateTimeTooltip()
+                            ->inlineLabel(),
+                        TextEntry::make('message')
+                            ->label('Reply')
+                            ->html()
+                            ->columnSpanFull(),
+                    ])
+                    ->placeholder('No replies yet')
+                    ->columns()
+                    ->columnSpanFull(),
             ]);
     }
 }
