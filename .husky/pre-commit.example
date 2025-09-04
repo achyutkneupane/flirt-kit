@@ -1,9 +1,0 @@
-#!/usr/bin/env sh
-
-if command -v bun >/dev/null 2>&1; then
-    bun lint && bun format
-elif command -v npm >/dev/null 2>&1; then
-    npm run lint && npm run format
-fi
-
-composer lint
