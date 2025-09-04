@@ -13,5 +13,7 @@ return new class extends SettingsMigration
         $this->migrator->add('site.logo', '');
         $this->migrator->add('site.favicon', '');
         $this->migrator->add('site.og_image', '');
+        $this->migrator->add('site.header_scripts', '');
+        $this->migrator->add('site.footer_scripts', '');
     }
 };
