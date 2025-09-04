@@ -18,8 +18,16 @@ final class InquiryController extends Controller
 
     public function store(InquiryStoreRequest $inquiryStoreRequest): RedirectResponse
     {
+        $withIpAndUserAgent = array_merge(
+            $inquiryStoreRequest->validated(),
+            [
+                'ip_address' => $inquiryStoreRequest->ip(),
+                'user_agent' => $inquiryStoreRequest->userAgent(),
+            ]
+        );
+
         Inquiry::query()
-            ->create($inquiryStoreRequest->validated());
+            ->create($withIpAndUserAgent);
 
         return to_route('contact.form');
     }
