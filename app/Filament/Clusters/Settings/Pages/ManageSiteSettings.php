@@ -16,6 +16,7 @@ use Filament\Pages\SettingsPage;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
+use Override;
 
 final class ManageSiteSettings extends SettingsPage
 {
@@ -30,6 +31,7 @@ final class ManageSiteSettings extends SettingsPage
     /**
      * @throws Exception
      */
+    #[Override]
     public function form(Schema $schema): Schema
     {
         return $schema

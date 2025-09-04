@@ -15,6 +15,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Override;
 
 final class InquiryResource extends Resource
 {
@@ -29,16 +30,19 @@ final class InquiryResource extends Resource
         return in_array(auth()->user()->role, [UserRole::Admin, UserRole::Developer]);
     }
 
+    #[Override]
     public static function infolist(Schema $schema): Schema
     {
         return InquiryInfolist::configure($schema);
     }
 
+    #[Override]
     public static function table(Table $table): Table
     {
         return InquiriesTable::configure($table);
     }
 
+    #[Override]
     public static function getRelations(): array
     {
         return [
