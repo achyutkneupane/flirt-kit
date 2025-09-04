@@ -77,7 +77,8 @@
         "lint": [
             "rector",
             "pint",
-            "@test"
+            "@test",
+            "git add ."
         ]
     },
     "extra": {

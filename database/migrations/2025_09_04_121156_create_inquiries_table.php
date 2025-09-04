@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,16 +13,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inquiries', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->nullable();
-            $table->string('phone')->nullable();
-            $table->text('message');
-            $table->boolean('is_read')->default(false);
-            $table->string('ip_address')->nullable();
-            $table->string('user_agent')->nullable();
-            $table->timestamps();
+        Schema::create('inquiries', function (Blueprint $blueprint): void {
+            $blueprint->id();
+            $blueprint->string('name');
+            $blueprint->string('email')->nullable();
+            $blueprint->string('phone')->nullable();
+            $blueprint->text('message');
+            $blueprint->boolean('is_read')->default(false);
+            $blueprint->string('ip_address')->nullable();
+            $blueprint->string('user_agent')->nullable();
+            $blueprint->timestamps();
         });
     }
 
